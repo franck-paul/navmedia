@@ -3,7 +3,7 @@
 #
 # This file is part of Media Navigator plugin for Dotclear 2.
 #
-# Copyright (c) 2011 Franck Paul and contributors
+# Copyright (c) 2011-2013 Franck Paul and contributors
 # Licensed under the GPL version 2.0 license.
 # See LICENSE file or
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -14,7 +14,7 @@ $this->registerModule(
 	/* Name */				"Media Navigator",
 	/* Description*/		"Navigate between media in folder",
 	/* Author */			"Franck Paul",
-	/* Version */			'1.1',
+	/* Version */			'1.2',
 	/* Permissions */		'contentadmin',
 	/* Priority */			10000
 );
