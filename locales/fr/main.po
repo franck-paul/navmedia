@@ -1,22 +1,24 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: medianav 1.0\n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-18 17:23+0200\n"
 "PO-Revision-Date: 2011-01-18T11:36:13+00:00\n"
 "Last-Translator: Franck Paul\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid "Navigation"
-msgstr "Navigation"
 
 msgid "Previous media:"
 msgstr "Média précédent :"
 
 msgid "Next media:"
 msgstr "Média suivant :"
+
+#~ msgid "Navigation"
+#~ msgstr "Navigation"
 
 msgid "Navigate between media in folder"
 msgstr "Naviguer parmi les médias du répertoire"
