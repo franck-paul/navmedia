@@ -12,6 +12,9 @@
 
 if (!defined('DC_CONTEXT_ADMIN')) { return; }
 
+// dead but useful code, in order to have translations
+__('Media Navigator').__('Navigate between media in folder');
+
 $core->addBehavior('adminMediaItemForm',array('adminNavMedia','adminMediaItemForm'));
 
 class adminNavMedia
