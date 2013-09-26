@@ -20,4 +20,3 @@ $this->registerModule(
 	/* Permissions */		'contentadmin',
 	/* Priority */			10000
 );
-?>

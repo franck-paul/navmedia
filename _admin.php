@@ -120,4 +120,3 @@ class adminNavMedia
 		return $ret;
 	}
 }
-?>
