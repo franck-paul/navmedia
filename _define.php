@@ -17,6 +17,9 @@ $this->registerModule(
 	/* Description*/		"Navigate between media in folder",
 	/* Author */			"Franck Paul",
 	/* Version */			'1.2',
-	/* Permissions */		'contentadmin',
-	/* Priority */			10000
+	array(
+		/* Permissions */	'permissions' =>	'contentadmin',
+		/* Type */			'type' =>			'plugin',
+		/* Priority */		'priority' => 		10000
+	)
 );
