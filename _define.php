@@ -17,10 +17,11 @@ $this->registerModule(
     "Media Navigator",                  // Name
     "Navigate between media in folder", // Description
     "Franck Paul",                      // Author
-    '1.2',                              // Version
-    array(
-        'permissions' => 'contentadmin', // Permissions
-        'type'        => 'plugin',       // Type
-        'priority'    => 10000          // Priority
-    )
+    '1.3',                              // Version
+    [
+        'requires'    => [['core', '2.13']], // Dependencies
+        'permissions' => 'contentadmin',     // Permissions
+        'type'        => 'plugin',           // Type
+        'priority'    => 10000              // Priority
+    ]
 );
