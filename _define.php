@@ -10,18 +10,23 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-if (!defined('DC_RC_PATH')) {return;}
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 
 $this->registerModule(
-    "Media Navigator",                  // Name
-    "Navigate between media in folder", // Description
-    "Franck Paul",                      // Author
+    'Media Navigator',                  // Name
+    'Navigate between media in folder', // Description
+    'Franck Paul',                      // Author
     '1.3',                              // Version
     [
         'requires'    => [['core', '2.13']], // Dependencies
         'permissions' => 'contentadmin',     // Permissions
         'type'        => 'plugin',           // Type
-        'priority'    => 10000              // Priority
+        'priority'    => 10000,              // Priority
+
+        'details'    => 'https://open-time.net/?q=navmedia',       // Details URL
+        'support'    => 'https://github.com/franck-paul/navmedia', // Support URL
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/main/dcstore.xml'
     ]
 );
