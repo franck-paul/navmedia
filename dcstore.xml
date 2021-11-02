@@ -1,8 +1,8 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="navmedia">
-    <name>Media Navigator</name>
+    <name>Navigate between media in folder</name>
     <version>1.3</version>
-    <author>Franck Paul</author>
+    <author>Navigate between media in folder</author>
     <desc>Navigate between media in folder</desc>
     <file>https://github.com/franck-paul/navmedia/releases/download/1.3/plugin-navmedia-1.3.zip</file>
     <da:dcmin>2.13</da:dcmin>
