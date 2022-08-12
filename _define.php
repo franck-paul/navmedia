@@ -18,15 +18,15 @@ $this->registerModule(
     'Media Navigator',                  // Name
     'Navigate between media in folder', // Description
     'Franck Paul',                      // Author
-    '1.3',                              // Version
+    '1.4',
     [
-        'requires'    => [['core', '2.13']], // Dependencies
+        'requires'    => [['core', '2.23']], // Dependencies
         'permissions' => 'contentadmin',     // Permissions
         'type'        => 'plugin',           // Type
         'priority'    => 10000,              // Priority
 
         'details'    => 'https://open-time.net/?q=navmedia',       // Details URL
         'support'    => 'https://github.com/franck-paul/navmedia', // Support URL
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/master/dcstore.xml'
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/master/dcstore.xml',
     ]
 );
