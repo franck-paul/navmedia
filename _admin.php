@@ -42,7 +42,7 @@ class adminNavMedia
         if (dirname($file->relname) != '') {
 
             // Construction de l'objet de parcours du répertoire dans lequel se trouve le média courant
-            $mp_media = new dcMedia(dcCore::app());
+            $mp_media = new dcMedia();
             // Changement du répertoire courant
             $mp_media->chdir(dirname($file->relname));
             // Récupération du contenu du répertoire
@@ -56,7 +56,6 @@ class adminNavMedia
                 // On a plus d'un fichier dans le répertoire
                 // Reprise de la présentation utilisée dans la gestion des médias.
 
-//                echo '<h3>'.__('Navigation').'</h3>';
                 echo '<div class="media-list"><div class="files-group">';
 
                 for ($mp_i = 0; $mp_i < count($mp_items); $mp_i++) {

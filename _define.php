@@ -20,7 +20,7 @@ $this->registerModule(
     'Franck Paul',                      // Author
     '1.4',
     [
-        'requires'    => [['core', '2.23']], // Dependencies
+        'requires'    => [['core', '2.24']], // Dependencies
         'permissions' => 'contentadmin',     // Permissions
         'type'        => 'plugin',           // Type
         'priority'    => 10000,              // Priority
