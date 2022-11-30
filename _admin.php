@@ -17,8 +17,6 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 // dead but useful code, in order to have translations
 __('Media Navigator') . __('Navigate between media in folder');
 
-dcCore::app()->addBehavior('adminMediaItemForm', ['adminNavMedia', 'adminMediaItemForm']);
-
 class adminNavMedia
 {
     /**
@@ -40,19 +38,17 @@ class adminNavMedia
         $opt = '&amp;popup=' . $popup . '&amp;post_id=' . $post_id;
 
         if (dirname($file->relname) != '') {
-
             // Construction de l'objet de parcours du répertoire dans lequel se trouve le média courant
             $mp_media = new dcMedia();
             // Changement du répertoire courant
             $mp_media->chdir(dirname($file->relname));
             // Récupération du contenu du répertoire
             $mp_media->getDir();
-            $mp_dir = &$mp_media->dir;
+            $mp_dir = $mp_media->dir;
 
             // Récupération de la liste des fichiers uniquement (les sous-répertoires sont exclus)
             $mp_items = array_values(array_merge($mp_dir['files']));
             if (count($mp_items) > 1) {
-
                 // On a plus d'un fichier dans le répertoire
                 // Reprise de la présentation utilisée dans la gestion des médias.
 
@@ -116,3 +112,5 @@ class adminNavMedia
         return $ret;
     }
 }
+
+dcCore::app()->addBehavior('adminMediaItemForm', [adminNavMedia::class, 'adminMediaItemForm']);

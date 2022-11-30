@@ -15,18 +15,20 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'Media Navigator',                  // Name
-    'Navigate between media in folder', // Description
-    'Franck Paul',                      // Author
-    '1.4',
+    'Media Navigator',
+    'Navigate between media in folder',
+    'Franck Paul',
+    '2.0',
     [
-        'requires'    => [['core', '2.24']], // Dependencies
-        'permissions' => 'contentadmin',     // Permissions
-        'type'        => 'plugin',           // Type
-        'priority'    => 10000,              // Priority
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_CONTENT_ADMIN,
+        ]),
+        'type'     => 'plugin',
+        'priority' => 10000,
 
-        'details'    => 'https://open-time.net/?q=navmedia',       // Details URL
-        'support'    => 'https://github.com/franck-paul/navmedia', // Support URL
+        'details'    => 'https://open-time.net/?q=navmedia',
+        'support'    => 'https://github.com/franck-paul/navmedia',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/master/dcstore.xml',
     ]
 );
