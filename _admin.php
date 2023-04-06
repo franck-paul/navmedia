@@ -10,6 +10,9 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
+
+use Dotclear\Helper\File\Files;
+
 if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
@@ -104,7 +107,7 @@ class adminNavMedia
 
         // Date et taille du média et URL d'ouverture
         '<li style="list-style: none outside none;">' . $file->media_dtstr . ' - ' .
-        files::size($file->size) . ' - ' . '<a href="' . $file->file_url . '">' . __('open') . '</a>' .
+        Files::size($file->size) . ' - ' . '<a href="' . $file->file_url . '">' . __('open') . '</a>' .
             '</li>' .
 
             '</ul>';
