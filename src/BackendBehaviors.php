@@ -10,24 +10,22 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
+declare(strict_types=1);
 
+namespace Dotclear\Plugin\navmedia;
+
+use dcMedia;
+use Dotclear\Helper\File\File;
 use Dotclear\Helper\File\Files;
 
-if (!defined('DC_CONTEXT_ADMIN')) {
-    return;
-}
-
-// dead but useful code, in order to have translations
-__('Media Navigator') . __('Navigate between media in folder');
-
-class adminNavMedia
+class BackendBehaviors
 {
     /**
      * adminMediaItemForm behavior
      *
-     * @param      fileItem  $file   The file
+     * @param      File  $file   The file
      */
-    public static function adminMediaItemForm($file)
+    public static function adminMediaItemForm(File $file)
     {
         // Récupération des infos nécessaires à la construction des liens de navigation
 
@@ -55,7 +53,7 @@ class adminNavMedia
                 // On a plus d'un fichier dans le répertoire
                 // Reprise de la présentation utilisée dans la gestion des médias.
 
-                echo '<div class="media-list"><div class="files-group">';
+                echo '<div class="media-list"><div class="files-group"><div class="media-items-bloc">';
 
                 for ($mp_i = 0; $mp_i < count($mp_items); $mp_i++) {
                     if ($mp_items[$mp_i]->media_id == $file->media_id) {
@@ -74,7 +72,7 @@ class adminNavMedia
                         break;
                     }
                 }
-                echo '</div></div>';
+                echo '</div></div></div>';
             }
         }
     }
@@ -82,12 +80,12 @@ class adminNavMedia
     /**
      * Display media attributes and links
      *
-     * @param      fileItem  $file   The file
+     * @param      File      $file   The file
      * @param      string    $opt    The option
      *
      * @return     string
      */
-    private static function displayMediaItem($file, $opt)
+    private static function displayMediaItem(File $file, $opt)
     {
         // Construction de l'URL pour le lien de navigation
         $mp_link = 'media_item.php?id=' . $file->media_id . $opt;
@@ -115,5 +113,3 @@ class adminNavMedia
         return $ret;
     }
 }
-
-dcCore::app()->addBehavior('adminMediaItemForm', [adminNavMedia::class, 'adminMediaItemForm']);

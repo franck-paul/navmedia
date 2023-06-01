@@ -13,30 +13,23 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../git-plugins/navMedia/src/Backend.php:27
 msgid "Media Navigator"
 msgstr ""
 
-#: ../git-plugins/navMedia/src/Backend.php:27
 msgid "Navigate between media in folder"
 msgstr ""
 
-#: ../git-plugins/navMedia/src/BackendBehaviors.php:63
 msgid "Previous media:"
 msgstr ""
 
-#: ../git-plugins/navMedia/src/BackendBehaviors.php:64
-#: ../git-plugins/navMedia/src/BackendBehaviors.php:69
 msgid "(none)"
 msgstr ""
 
-#: ../git-plugins/navMedia/src/BackendBehaviors.php:68
 msgid "Next media:"
 msgstr ""
 
-#: ../git-plugins/navMedia/src/BackendBehaviors.php:108
 msgid "open"
 msgstr ""

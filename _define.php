@@ -14,11 +14,13 @@ $this->registerModule(
     'Media Navigator',
     'Navigate between media in folder',
     'Franck Paul',
-    '2.0',
+    '3.0',
     [
         'requires'    => [['core', '2.26']],
         'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_USAGE,
             dcAuth::PERMISSION_CONTENT_ADMIN,
+            dcAuth::PERMISSION_MEDIA_ADMIN,
         ]),
         'type'     => 'plugin',
         'priority' => 10000,
