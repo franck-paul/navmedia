@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\navmedia;
 
+use dcCore;
 use dcMedia;
 use Dotclear\Helper\File\File;
 use Dotclear\Helper\File\Files;
@@ -36,7 +37,11 @@ class BackendBehaviors
         $popup = (int) !empty($_GET['popup']);
 
         // Paramètres supplémentaires pour les URLs
-        $opt = '&amp;popup=' . $popup . '&amp;post_id=' . $post_id;
+        $opt  = '&amp;popup=' . $popup . '&amp;post_id=' . $post_id;
+        $opts = [
+            'popup'   => $popup,
+            'post_id' => $post_id,
+        ];
 
         if (dirname($file->relname) != '') {
             // Construction de l'objet de parcours du répertoire dans lequel se trouve le média courant
@@ -61,12 +66,12 @@ class BackendBehaviors
 
                         // Média précédent
                         echo '<div class="media-item media-col-0">' . '<h4>' . __('Previous media:') . '</h4>' .
-                            ($mp_i > 0 ? self::displayMediaItem($mp_items[$mp_i - 1], $opt) : __('(none)')) .
+                            ($mp_i > 0 ? self::displayMediaItem($mp_items[$mp_i - 1], $opts) : __('(none)')) .
                             '</div>';
 
                         // Image suivante
                         echo '<div class="media-item media-col-1">' . '<h4>' . __('Next media:') . '</h4>' .
-                            ($mp_i < count($mp_items) - 1 ? self::displayMediaItem($mp_items[$mp_i + 1], $opt) : __('(none)')) .
+                            ($mp_i < count($mp_items) - 1 ? self::displayMediaItem($mp_items[$mp_i + 1], $opts) : __('(none)')) .
                             '</div>';
 
                         break;
@@ -81,14 +86,17 @@ class BackendBehaviors
      * Display media attributes and links
      *
      * @param      File      $file   The file
-     * @param      string    $opt    The option
+     * @param      array     $opts   The options
      *
      * @return     string
      */
-    private static function displayMediaItem(File $file, $opt)
+    private static function displayMediaItem(File $file, array $opts)
     {
         // Construction de l'URL pour le lien de navigation
-        $mp_link = 'media_item.php?id=' . $file->media_id . $opt;
+        $mp_link = dcCore::app()->adminurl->get('admin.media.item', [
+            'id' => $file->media_id,
+            ...$opts,
+        ]);
 
         $ret = // Vignette du média avec lien de navigation
         '<p><a class="media-icon media-link" href="' . $mp_link . '">' .
