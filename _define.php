@@ -14,7 +14,7 @@ $this->registerModule(
     'Media Navigator',
     'Navigate between media in folder',
     'Franck Paul',
-    '3.2',
+    '3.2.1',
     [
         'requires'    => [['core', '2.26']],
         'permissions' => dcCore::app()->auth->makePermissions([
