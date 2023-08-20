@@ -15,29 +15,26 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\navmedia;
 
 use dcCore;
-use dcNsProcess;
+use Dotclear\Core\Process;
 
-class Backend extends dcNsProcess
+class Backend extends Process
 {
-    protected static $init = false; /** @deprecated since 2.27 */
     public static function init(): bool
     {
-        static::$init = My::checkContext(My::BACKEND);
-
         // dead but useful code, in order to have translations
         __('Media Navigator') . __('Navigate between media in folder');
 
-        return static::$init;
+        return self::status(My::checkContext(My::BACKEND));
     }
 
     public static function process(): bool
     {
-        if (!static::$init) {
+        if (!self::status()) {
             return false;
         }
 
         dcCore::app()->addBehaviors([
-            'adminMediaItemForm' => [BackendBehaviors::class, 'adminMediaItemForm'],
+            'adminMediaItemForm' => BackendBehaviors::adminMediaItemForm(...),
         ]);
 
         return true;

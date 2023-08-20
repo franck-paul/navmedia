@@ -93,7 +93,7 @@ class BackendBehaviors
     private static function displayMediaItem(File $file, array $opts)
     {
         // Construction de l'URL pour le lien de navigation
-        $mp_link = dcCore::app()->adminurl->get('admin.media.item', [
+        $mp_link = dcCore::app()->admin->url->get('admin.media.item', [
             'id' => $file->media_id,
             ...$opts,
         ]);
