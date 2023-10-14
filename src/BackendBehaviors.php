@@ -26,7 +26,7 @@ class BackendBehaviors
      *
      * @param      File  $file   The file
      */
-    public static function adminMediaItemForm(File $file)
+    public static function adminMediaItemForm(File $file): string
     {
         // Récupération des infos nécessaires à la construction des liens de navigation
 
@@ -80,20 +80,22 @@ class BackendBehaviors
                 echo '</div></div></div>';
             }
         }
+
+        return '';
     }
 
     /**
      * Display media attributes and links
      *
-     * @param      File      $file   The file
-     * @param      array     $opts   The options
+     * @param      File                     $file   The file
+     * @param      array<string, mixed>     $opts   The options
      *
      * @return     string
      */
-    private static function displayMediaItem(File $file, array $opts)
+    private static function displayMediaItem(File $file, array $opts): string
     {
         // Construction de l'URL pour le lien de navigation
-        $mp_link = dcCore::app()->admin->url->get('admin.media.item', [
+        $mp_link = dcCore::app()->adminurl->get('admin.media.item', [
             'id' => $file->media_id,
             ...$opts,
         ]);
