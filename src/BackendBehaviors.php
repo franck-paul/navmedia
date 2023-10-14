@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\navmedia;
 
 use dcCore;
-use dcMedia;
 use Dotclear\Helper\File\File;
 use Dotclear\Helper\File\Files;
 
@@ -45,12 +44,12 @@ class BackendBehaviors
 
         if (dirname($file->relname) != '') {
             // Construction de l'objet de parcours du répertoire dans lequel se trouve le média courant
-            $mp_media = new dcMedia();
+            $mp_media = dcCore::app()->media;
             // Changement du répertoire courant
             $mp_media->chdir(dirname($file->relname));
             // Récupération du contenu du répertoire
             $mp_media->getDir();
-            $mp_dir = $mp_media->dir;
+            $mp_dir = $mp_media->dir;   // @phpstan-ignore-line
 
             // Récupération de la liste des fichiers uniquement (les sous-répertoires sont exclus)
             $mp_items = array_values(array_merge($mp_dir['files']));
