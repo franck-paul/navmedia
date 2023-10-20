@@ -17,13 +17,9 @@ $this->registerModule(
     '4.0',
     [
         'requires'    => [['core', '2.28']],
-        'permissions' => dcCore::app()->auth->makePermissions([
-            dcAuth::PERMISSION_USAGE,
-            dcAuth::PERMISSION_CONTENT_ADMIN,
-            dcAuth::PERMISSION_MEDIA_ADMIN,
-        ]),
-        'type'     => 'plugin',
-        'priority' => 10000,
+        'permissions' => 'My',
+        'type'        => 'plugin',
+        'priority'    => 10000,
 
         'details'    => 'https://open-time.net/?q=navmedia',
         'support'    => 'https://github.com/franck-paul/navmedia',

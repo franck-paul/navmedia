@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\navmedia;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Helper\File\File;
 use Dotclear\Helper\File\Files;
 
@@ -43,7 +43,7 @@ class BackendBehaviors
 
         if (dirname($file->relname) != '') {
             // Construction de l'objet de parcours du répertoire dans lequel se trouve le média courant
-            $mp_media = dcCore::app()->media;
+            $mp_media = App::media();
             // Changement du répertoire courant
             $mp_media->chdir(dirname($file->relname));
             // Récupération du contenu du répertoire
@@ -91,7 +91,7 @@ class BackendBehaviors
     private static function displayMediaItem(File $file, array $opts): string
     {
         // Construction de l'URL pour le lien de navigation
-        $mp_link = dcCore::app()->adminurl->get('admin.media.item', [
+        $mp_link = App::backend()->url()->get('admin.media.item', [
             'id' => $file->media_id,
             ...$opts,
         ]);
