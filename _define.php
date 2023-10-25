@@ -14,7 +14,7 @@ $this->registerModule(
     'Media Navigator',
     'Navigate between media in folder',
     'Franck Paul',
-    '4.0',
+    '5.0',
     [
         'requires'    => [['core', '2.28']],
         'permissions' => 'My',
