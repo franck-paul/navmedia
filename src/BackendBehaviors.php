@@ -30,7 +30,7 @@ class BackendBehaviors
         // Récupération des infos nécessaires à la construction des liens de navigation
 
         // identificateur du billet en cours d'édition
-        $post_id = !empty($_GET['post_id']) ? (int) $_GET['post_id'] : null;
+        $post_id = empty($_GET['post_id']) ? null : (int) $_GET['post_id'];
 
         // Indicateur d'affichage popup de la page détail du média
         $popup = (int) !empty($_GET['popup']);
@@ -55,24 +55,26 @@ class BackendBehaviors
                 // Reprise de la présentation utilisée dans la gestion des médias.
 
                 echo '<div class="media-list"><div class="files-group"><div class="media-items-bloc">';
+                $counter = count($mp_items);
 
-                for ($mp_i = 0; $mp_i < count($mp_items); $mp_i++) {
+                for ($mp_i = 0; $mp_i < $counter; ++$mp_i) {
                     if ($mp_items[$mp_i]->media_id == $file->media_id) {
                         // On a trouvé le média courant dans la liste
 
                         // Média précédent
-                        echo '<div class="media-item media-col-0">' . '<h4>' . __('Previous media:') . '</h4>' .
+                        echo '<div class="media-item media-col-0"><h4>' . __('Previous media:') . '</h4>' .
                             ($mp_i > 0 ? self::displayMediaItem($mp_items[$mp_i - 1], $opts) : __('(none)')) .
                             '</div>';
 
                         // Image suivante
-                        echo '<div class="media-item media-col-1">' . '<h4>' . __('Next media:') . '</h4>' .
+                        echo '<div class="media-item media-col-1"><h4>' . __('Next media:') . '</h4>' .
                             ($mp_i < count($mp_items) - 1 ? self::displayMediaItem($mp_items[$mp_i + 1], $opts) : __('(none)')) .
                             '</div>';
 
                         break;
                     }
                 }
+
                 echo '</div></div></div>';
             }
         }
