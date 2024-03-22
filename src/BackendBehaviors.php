@@ -49,7 +49,7 @@ class BackendBehaviors
             // Récupération du contenu du répertoire
             $mp_media->getDir();
             // Récupération de la liste des fichiers uniquement (les sous-répertoires sont exclus)
-            $mp_items = array_values(array_merge($mp_media->getFiles()));
+            $mp_items = array_merge($mp_media->getFiles());
             if (count($mp_items) > 1) {
                 // On a plus d'un fichier dans le répertoire
                 // Reprise de la présentation utilisée dans la gestion des médias.
@@ -100,7 +100,7 @@ class BackendBehaviors
 
         return // Vignette du média avec lien de navigation
         '<p><a class="media-icon media-link" href="' . $mp_link . '">' .
-        '<img style="margin-right: 0.5em; padding: 2px;" src="' . $file->media_icon . '" alt="" /></a></p>' .
+        '<img style="margin-right: 0.5em; padding: 2px;" src="' . $file->media_icon . '" alt=""></a></p>' .
 
         // Attributs
         '<ul style="padding-bottom: 1em;">' .
