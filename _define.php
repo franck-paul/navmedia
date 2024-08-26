@@ -23,6 +23,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=navmedia',
         'support'    => 'https://github.com/franck-paul/navmedia',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/master/dcstore.xml',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/main/dcstore.xml',
     ]
 );
