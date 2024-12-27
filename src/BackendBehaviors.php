@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief navmedia, a plugin for Dotclear 2
  *
@@ -41,7 +42,7 @@ class BackendBehaviors
             'post_id' => $post_id,
         ];
 
-        if (dirname($file->relname) != '') {
+        if (dirname($file->relname) !== '') {
             // Construction de l'objet de parcours du répertoire dans lequel se trouve le média courant
             $mp_media = App::media();
             // Changement du répertoire courant
@@ -87,8 +88,6 @@ class BackendBehaviors
      *
      * @param      File                     $file   The file
      * @param      array<string, mixed>     $opts   The options
-     *
-     * @return     string
      */
     private static function displayMediaItem(File $file, array $opts): string
     {
