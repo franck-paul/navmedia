@@ -19,6 +19,9 @@ use Dotclear\App;
 use Dotclear\Helper\File\File;
 use Dotclear\Helper\File\Files;
 
+/**
+ * @todo switch Helper/Html/Form/...
+ */
 class BackendBehaviors
 {
     /**
