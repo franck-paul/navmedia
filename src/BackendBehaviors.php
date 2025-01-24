@@ -102,7 +102,7 @@ class BackendBehaviors
 
         return // Vignette du média avec lien de navigation
         '<p><a class="media-icon media-link" href="' . $mp_link . '">' .
-        '<img class="media-icon-preview" style="margin-right: 0.5em; margin: 2px;" src="' . $file->media_icon . '" alt=""></a></p>' .
+        '<img class="media-icon-square" style="margin-right: 0.5em; margin: 2px;" src="' . $file->media_icon . '" alt=""></a></p>' .
 
         // Attributs
         '<ul style="padding-bottom: 1em;">' .
