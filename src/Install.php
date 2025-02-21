@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief navmedia, a plugin for Dotclear 2
  *

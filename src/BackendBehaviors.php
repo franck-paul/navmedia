@@ -18,10 +18,15 @@ namespace Dotclear\Plugin\navmedia;
 use Dotclear\App;
 use Dotclear\Helper\File\File;
 use Dotclear\Helper\File\Files;
+use Dotclear\Helper\Html\Form\Div;
+use Dotclear\Helper\Html\Form\Img;
+use Dotclear\Helper\Html\Form\Li;
+use Dotclear\Helper\Html\Form\Link;
+use Dotclear\Helper\Html\Form\Para;
+use Dotclear\Helper\Html\Form\Set;
+use Dotclear\Helper\Html\Form\Text;
+use Dotclear\Helper\Html\Form\Ul;
 
-/**
- * @todo switch Helper/Html/Form/...
- */
 class BackendBehaviors
 {
     /**
@@ -58,28 +63,49 @@ class BackendBehaviors
                 // On a plus d'un fichier dans le répertoire
                 // Reprise de la présentation utilisée dans la gestion des médias.
 
-                echo '<div class="media-list"><div class="files-group"><div class="media-items-bloc">';
                 $counter = count($mp_items);
-
+                $blocks  = [];
                 for ($mp_i = 0; $mp_i < $counter; ++$mp_i) {
                     if ($mp_items[$mp_i]->media_id == $file->media_id) {
                         // On a trouvé le média courant dans la liste
 
                         // Média précédent
-                        echo '<div class="media-item media-col-0"><h4>' . __('Previous media:') . '</h4>' .
-                            ($mp_i > 0 ? self::displayMediaItem($mp_items[$mp_i - 1], $opts) : __('(none)')) .
-                            '</div>';
+                        $blocks[] = (new Div())
+                            ->class(['media-item-bloc', 'media-item', 'media-col-0'])
+                            ->items([
+                                (new Text('h4', __('Previous media:'))),
+                                $mp_i > 0 ?
+                                    self::displayMediaItem($mp_items[$mp_i - 1], $opts) :
+                                    (new Text(null, __('(none)'))),
+                            ]);
 
                         // Image suivante
-                        echo '<div class="media-item media-col-1"><h4>' . __('Next media:') . '</h4>' .
-                            ($mp_i < count($mp_items) - 1 ? self::displayMediaItem($mp_items[$mp_i + 1], $opts) : __('(none)')) .
-                            '</div>';
+                        $blocks[] = (new Div())
+                            ->class(['media-item-bloc', 'media-item', 'media-col-1'])
+                            ->items([
+                                (new Text('h4', __('Next media:'))),
+                                $mp_i < count($mp_items) - 1 ?
+                                    self::displayMediaItem($mp_items[$mp_i + 1], $opts) :
+                                    (new Text(null, __('(none)'))),
+                            ]);
 
                         break;
                     }
                 }
 
-                echo '</div></div></div>';
+                echo
+                (new Div())
+                    ->class('media-list')
+                    ->items([
+                        (new Div())
+                            ->class('files-group')
+                            ->items([
+                                (new Div())
+                                    ->class('media-items-bloc')
+                                    ->items($blocks),
+                            ]),
+                    ])
+                ->render();
             }
         }
 
@@ -92,7 +118,7 @@ class BackendBehaviors
      * @param      File                     $file   The file
      * @param      array<string, mixed>     $opts   The options
      */
-    private static function displayMediaItem(File $file, array $opts): string
+    private static function displayMediaItem(File $file, array $opts): Set
     {
         // Construction de l'URL pour le lien de navigation
         $mp_link = App::backend()->url()->get('admin.media.item', [
@@ -100,24 +126,35 @@ class BackendBehaviors
             ...$opts,
         ]);
 
-        return // Vignette du média avec lien de navigation
-        '<p><a class="media-icon media-link" href="' . $mp_link . '">' .
-        '<img class="media-icon-square" style="margin-right: 0.5em; margin: 2px;" src="' . $file->media_icon . '" alt=""></a></p>' .
-
-        // Attributs
-        '<ul style="padding-bottom: 1em;">' .
-
-        // Nom du fichier avec lien de navigation
-        '<li style="list-style: none outside none;"><a class="media-link" href="' . $mp_link . '">' . $file->basename . '</a></li>' .
-
-        // Titre du média
-        '<li style="list-style: none outside none;">' . $file->media_title . '</li>' .
-
-        // Date et taille du média et URL d'ouverture
-        '<li style="list-style: none outside none;">' . $file->media_dtstr . ' - ' .
-        Files::size($file->size) . ' - ' . '<a href="' . $file->file_url . '">' . __('open') . '</a>' .
-        '</li>' .
-
-        '</ul>';
+        return (new Set())
+            ->items([
+                // Vignette du média avec lien de navigation
+                (new Para())
+                    ->items([
+                        (new Link())
+                            ->class(['media-icon', 'media-link'])
+                            ->href($mp_link)
+                            ->items([
+                                (new Img($file->media_icon))
+                                    ->class('media-icon-square'),
+                                (new Text(null, $file->basename)),
+                            ]),
+                    ]),
+                (new Ul())
+                    ->items([
+                        (new Li())
+                            ->text($file->media_title),
+                        (new Li())
+                            ->separator(' - ')
+                            ->items([
+                                (new Text(null, $file->media_dtstr)),
+                                (new Text(null, Files::size($file->size))),
+                                (new Link())
+                                    ->class('modal-image')
+                                    ->href($file->file_url)
+                                    ->text(__('open')),
+                            ]),
+                    ]),
+            ]);
     }
 }
