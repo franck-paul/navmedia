@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\navmedia;
 
 use Dotclear\App;
+use Dotclear\Core\Backend\MediaPage;
 use Dotclear\Helper\File\File;
 use Dotclear\Helper\File\Files;
 use Dotclear\Helper\Html\Form\Div;
@@ -36,29 +37,11 @@ class BackendBehaviors
      */
     public static function adminMediaItemForm(File $file): string
     {
-        // Récupération des infos nécessaires à la construction des liens de navigation
-
-        // identificateur du billet en cours d'édition
-        $post_id = empty($_GET['post_id']) ? null : (int) $_GET['post_id'];
-
-        // Indicateur d'affichage popup de la page détail du média
-        $popup = (int) !empty($_GET['popup']);
-
-        // Paramètres supplémentaires pour les URLs
-        $opts = [
-            'popup'   => $popup,
-            'post_id' => $post_id,
-        ];
-
         if (dirname($file->relname) !== '') {
-            // Construction de l'objet de parcours du répertoire dans lequel se trouve le média courant
-            $mp_media = App::media();
-            // Changement du répertoire courant
-            $mp_media->chdir(dirname($file->relname));
-            // Récupération du contenu du répertoire
-            $mp_media->getDir();
+            $page = new MediaPage();
+
             // Récupération de la liste des fichiers uniquement (les sous-répertoires sont exclus)
-            $mp_items = array_merge($mp_media->getFiles());
+            $mp_items = array_merge(App::media()->getFiles());
             if (count($mp_items) > 1) {
                 // On a plus d'un fichier dans le répertoire
                 // Reprise de la présentation utilisée dans la gestion des médias.
@@ -75,7 +58,7 @@ class BackendBehaviors
                             ->items([
                                 (new Text('h4', __('Previous media:'))),
                                 $mp_i > 0 ?
-                                    self::displayMediaItem($mp_items[$mp_i - 1], $opts) :
+                                    self::displayMediaItem($mp_items[$mp_i - 1], $page->values()) :
                                     (new Text(null, __('(none)'))),
                             ]);
 
@@ -85,7 +68,7 @@ class BackendBehaviors
                             ->items([
                                 (new Text('h4', __('Next media:'))),
                                 $mp_i < count($mp_items) - 1 ?
-                                    self::displayMediaItem($mp_items[$mp_i + 1], $opts) :
+                                    self::displayMediaItem($mp_items[$mp_i + 1], $page->values()) :
                                     (new Text(null, __('(none)'))),
                             ]);
 
