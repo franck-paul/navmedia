@@ -17,8 +17,8 @@ namespace Dotclear\Plugin\navmedia;
 
 use Dotclear\App;
 use Dotclear\Core\Backend\MediaPage;
-use Dotclear\Core\MediaFile;
 use Dotclear\Helper\File\Files;
+use Dotclear\Helper\File\MediaFile;
 use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Form\Img;
 use Dotclear\Helper\Html\Form\Li;
