@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="navmedia">
     <name>Media Navigator</name>
-    <version>6.0</version>
+    <version>6.1</version>
     <author>Franck Paul</author>
     <desc>Navigate between media in folder</desc>
-    <date>2025-09-06T12:13:47+0200</date>
-    <file>https://github.com/franck-paul/navmedia/releases/download/6.0/plugin-navmedia-6.0.zip</file>
+    <date>2025-09-06T15:57:51+0200</date>
+    <file>https://github.com/franck-paul/navmedia/releases/download/6.1/plugin-navmedia-6.1.zip</file>
     <da:dcmin>2.36</da:dcmin>
     <da:details>https://open-time.net/?q=navmedia</da:details>
     <da:support>https://github.com/franck-paul/navmedia</da:support>
