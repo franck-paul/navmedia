@@ -41,7 +41,7 @@ class Uninstall extends Process
         // $var   = My::id(); // Var sub-folder
 
         // Database table name
-        // $table = App::con()->prefix() . 'navmedia';
+        // $table = 'navmedia';
 
         $user_actions = [
 

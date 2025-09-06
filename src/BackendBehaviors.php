@@ -17,7 +17,7 @@ namespace Dotclear\Plugin\navmedia;
 
 use Dotclear\App;
 use Dotclear\Core\Backend\MediaPage;
-use Dotclear\Helper\File\File;
+use Dotclear\Core\MediaFile;
 use Dotclear\Helper\File\Files;
 use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Form\Img;
@@ -33,9 +33,9 @@ class BackendBehaviors
     /**
      * adminMediaItemForm behavior
      *
-     * @param      File  $file   The file
+     * @param      MediaFile  $file   The file
      */
-    public static function adminMediaItemForm(File $file): string
+    public static function adminMediaItemForm(MediaFile $file): string
     {
         if (dirname($file->relname) !== '') {
             $page = new MediaPage();
@@ -98,10 +98,10 @@ class BackendBehaviors
     /**
      * Display media attributes and links
      *
-     * @param      File                     $file   The file
+     * @param      MediaFile                $file   The file
      * @param      array<string, mixed>     $opts   The options
      */
-    private static function displayMediaItem(File $file, array $opts): Set
+    private static function displayMediaItem(MediaFile $file, array $opts): Set
     {
         // Construction de l'URL pour le lien de navigation
         $mp_link = App::backend()->url()->get('admin.media.item', [
