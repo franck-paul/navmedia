@@ -15,9 +15,9 @@ $this->registerModule(
     'Media Navigator',
     'Navigate between media in folder',
     'Franck Paul',
-    '6.1',
+    '6.2',
     [
-        'date'        => '2025-09-06T15:57:51+0200',
+        'date'        => '2025-09-07T15:53:59+0200',
         'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'type'        => 'plugin',
