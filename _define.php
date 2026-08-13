@@ -11,21 +11,25 @@
  * @copyright Franck Paul contact@open-time.net
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-$this->registerModule(
-    'Media Navigator',
-    'Navigate between media in folder',
-    'Franck Paul',
-    '6.3',
-    [
-        'date'        => '2026-08-03T10:06:27+0200',
-        'requires'    => [['core', '2.36']],
-        'permissions' => 'My',
-        'type'        => 'plugin',
-        'priority'    => 10000,
+declare(strict_types=1);
 
-        'details'    => 'https://open-time.net/?q=navmedia',
-        'support'    => 'https://github.com/franck-paul/navmedia',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/main/dcstore.xml',
-        'license'    => 'gpl2',
-    ]
-);
+if (isset($this) && is_object($this) && method_exists($this, 'registerModule') && isset($this->id) && is_string($this->id)) {
+    $this->registerModule(
+        'Media Navigator',
+        'Navigate between media in folder',
+        'Franck Paul',
+        '6.3',
+        [
+            'date'        => '2026-08-03T10:06:27+0200',
+            'requires'    => [['core', '2.36']],
+            'permissions' => 'My',
+            'type'        => 'plugin',
+            'priority'    => 10000,
+
+            'details'    => 'https://open-time.net/?q=navmedia',
+            'support'    => 'https://github.com/franck-paul/navmedia',
+            'repository' => 'https://raw.githubusercontent.com/franck-paul/navmedia/main/dcstore.xml',
+            'license'    => 'gpl2',
+        ]
+    );
+}
