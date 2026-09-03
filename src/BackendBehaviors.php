@@ -33,12 +33,12 @@ class BackendBehaviors
     /**
      * adminMediaItemForm behavior
      *
-     * @param      MediaFile  $file   The file
+     * @param      MediaFile  $mediaFile   The file
      */
-    public static function adminMediaItemForm(MediaFile $file): string
+    public static function adminMediaItemForm(MediaFile $mediaFile): string
     {
-        if (dirname($file->relname) !== '') {
-            $page = new MediaPage();
+        if (dirname($mediaFile->relname) !== '') {
+            $mediaPage = new MediaPage();
 
             // Récupération de la liste des fichiers uniquement (les sous-répertoires sont exclus)
             $mp_items = array_merge(App::media()->getFiles());
@@ -49,7 +49,7 @@ class BackendBehaviors
                 $counter = count($mp_items);
                 $blocks  = [];
                 for ($mp_i = 0; $mp_i < $counter; ++$mp_i) {
-                    if ($mp_items[$mp_i]->media_id == $file->media_id) {
+                    if ($mp_items[$mp_i]->media_id == $mediaFile->media_id) {
                         // On a trouvé le média courant dans la liste
 
                         // Média précédent
@@ -58,7 +58,7 @@ class BackendBehaviors
                             ->items([
                                 (new Text('h4', __('Previous media:'))),
                                 $mp_i > 0 ?
-                                    self::displayMediaItem($mp_items[$mp_i - 1], $page->values()) :
+                                    self::displayMediaItem($mp_items[$mp_i - 1], $mediaPage->values()) :
                                     (new Text(null, __('(none)'))),
                             ]);
 
@@ -68,7 +68,7 @@ class BackendBehaviors
                             ->items([
                                 (new Text('h4', __('Next media:'))),
                                 $mp_i < count($mp_items) - 1 ?
-                                    self::displayMediaItem($mp_items[$mp_i + 1], $page->values()) :
+                                    self::displayMediaItem($mp_items[$mp_i + 1], $mediaPage->values()) :
                                     (new Text(null, __('(none)'))),
                             ]);
 
@@ -98,14 +98,14 @@ class BackendBehaviors
     /**
      * Display media attributes and links
      *
-     * @param      MediaFile                $file   The file
+     * @param      MediaFile                $mediaFile   The file
      * @param      array<string, mixed>     $opts   The options
      */
-    private static function displayMediaItem(MediaFile $file, array $opts): Set
+    private static function displayMediaItem(MediaFile $mediaFile, array $opts): Set
     {
         // Construction de l'URL pour le lien de navigation
         $mp_link = App::backend()->url()->get('admin.media.item', [
-            'id' => $file->media_id,
+            'id' => $mediaFile->media_id,
             ...$opts,
         ]);
 
@@ -118,23 +118,23 @@ class BackendBehaviors
                             ->class(['media-icon', 'media-link'])
                             ->href($mp_link)
                             ->items([
-                                (new Img($file->media_icon))
+                                (new Img($mediaFile->media_icon))
                                     ->class('media-icon-square'),
-                                (new Text(null, $file->basename)),
+                                (new Text(null, $mediaFile->basename)),
                             ]),
                     ]),
                 (new Ul())
                     ->items([
                         (new Li())
-                            ->text($file->media_title),
+                            ->text($mediaFile->media_title),
                         (new Li())
                             ->separator(' - ')
                             ->items([
-                                (new Text(null, $file->media_dtstr)),
-                                (new Text(null, Files::size($file->size))),
+                                (new Text(null, $mediaFile->media_dtstr)),
+                                (new Text(null, Files::size($mediaFile->size))),
                                 (new Link())
                                     ->class('modal-image')
-                                    ->href($file->file_url)
+                                    ->href($mediaFile->file_url)
                                     ->text(__('open')),
                             ]),
                     ]),
