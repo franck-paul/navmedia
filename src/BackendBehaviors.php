@@ -49,7 +49,7 @@ class BackendBehaviors
                 $counter = count($mp_items);
                 $blocks  = [];
                 for ($mp_i = 0; $mp_i < $counter; ++$mp_i) {
-                    if ($mp_items[$mp_i]->media_id == $mediaFile->media_id) {
+                    if ($mp_items[$mp_i]->media_id === $mediaFile->media_id) {
                         // On a trouvé le média courant dans la liste
 
                         // Média précédent
