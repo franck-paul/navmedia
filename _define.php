@@ -18,9 +18,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'Media Navigator',
         'Navigate between media in folder',
         'Franck Paul',
-        '6.3',
+        '6.4',
         [
-            'date'        => '2026-08-03T10:06:27+0200',
+            'date'        => '2026-11-07T16:59:49+0100',
             'requires'    => [['core', '2.36']],
             'permissions' => 'My',
             'type'        => 'plugin',
